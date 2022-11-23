@@ -1,0 +1,29 @@
+html {
+  background-color: black;
+}
+canvas {
+  border: 1px solid white;
+}
+h1 {
+  color: white;
+}
+p {
+  color: white;
+}
+body {
+  text-align: center;
+  margin: auto;
+  width: 700px;
+}
+span {
+  margin-left: 40px;
+}
+input {
+  width: 70px;
+}
+#ySpan {
+  margin-left: 0;
+}
+#hSpan {
+  margin-left: 0;
+}
