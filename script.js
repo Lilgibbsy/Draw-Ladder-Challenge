@@ -4,8 +4,6 @@ let ctx = cnv.getContext("2d");
 cnv.width = 700;
 cnv.height = 500;
 
-let ladder = [{ x: 0, y: 0, w: 0, h: 0, numRings: 0 }];
-
 setInterval(draw, 1);
 function draw() {
   let x = +document.getElementById("x").value;
@@ -14,8 +12,6 @@ function draw() {
   let h = +document.getElementById("h").value;
   let numRings = +document.getElementById("numRings").value;
 
-  let ladder = [{ x: x, y: y, w: w, h: h }];
-  let rings = [{ x: 0, y: 0, w: 0, h: 0 }];
   ctx.beginPath();
   ctx.fillStyle = "black";
   ctx.fillRect(0, 0, 700, 500);
@@ -23,32 +19,27 @@ function draw() {
 
   ctx.beginPath();
   ctx.strokeStyle = "red";
-  ctx.moveTo(ladder[0].x, ladder[0].y);
-  ctx.lineTo(ladder[0].x, ladder[0].y + ladder[0].h);
+  ctx.moveTo(x, y);
+  ctx.lineTo(x, y + h);
   ctx.stroke();
   ctx.restore();
 
   ctx.beginPath();
   ctx.strokeStyle = "white";
-  ctx.moveTo(ladder[0].x + ladder[0].w, ladder[0].y);
-  ctx.lineTo(ladder[0].x + ladder[0].w, ladder[0].y + ladder[0].h);
+  ctx.moveTo(x + w, y);
+  ctx.lineTo(x + w, y + h);
   ctx.stroke();
   ctx.restore();
-  let spaceBetweenRings = h / numRings;
+  let spaceBetweenRings = h / (numRings + 1);
 
   for (let n = 0; n < numRings; n++) {
-    const ring = { x: x, y: spaceBetweenRings, w: w, h: h };
-    spaceBetweenRings += spaceBetweenRings;
-    rings.push(ring);
+    ctx.beginPath();
+    ctx.strokeStyle = "red";
+    ctx.moveTo(x, y + spaceBetweenRings);
+    ctx.lineTo(x + w, y + spaceBetweenRings);
+    ctx.stroke();
+    ctx.restore();
+    spaceBetweenRings = spaceBetweenRings + 25;
   }
-
-  console.log(ladder[0].x, ladder[0].y, ladder[0].w, ladder[0].h);
-  console.log(rings);
+  console.log(spaceBetweenRings, h, numRings);
 }
-
-ctx.beginPath();
-ctx.strokeStyle = "red";
-ctx.moveTo(rings.x, rings.y);
-ctx.lineTo(rings.x + w, rings.y);
-ctx.stroke();
-ctx.restore();
