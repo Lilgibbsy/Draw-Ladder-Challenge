@@ -25,12 +25,13 @@ function draw() {
   ctx.restore();
 
   ctx.beginPath();
-  ctx.strokeStyle = "white";
+  ctx.strokeStyle = "red";
   ctx.moveTo(x + w, y);
   ctx.lineTo(x + w, y + h);
   ctx.stroke();
   ctx.restore();
   let spaceBetweenRings = h / (numRings + 1);
+  let addSpace = spaceBetweenRings;
 
   for (let n = 0; n < numRings; n++) {
     ctx.beginPath();
@@ -39,7 +40,7 @@ function draw() {
     ctx.lineTo(x + w, y + spaceBetweenRings);
     ctx.stroke();
     ctx.restore();
-    spaceBetweenRings = spaceBetweenRings + 25;
+    spaceBetweenRings = spaceBetweenRings + addSpace;
   }
   console.log(spaceBetweenRings, h, numRings);
 }
